@@ -1,4 +1,3 @@
-
 # Applied AI Red Teaming & Adversarial Security Repository
 
 [![OWASP GenAI Top 10](https://img.shields.io/badge/OWASP-GenAI%20Top%2010%20(2026)-blue.svg)](https://genai.owasp.org/)
@@ -8,7 +7,7 @@
 
 A systematic repository of adversarial machine learning (AML) assessments, exploit proofs-of-concept (PoCs), empirical risk verifications, and defensive mitigations across local and enterprise LLM architectures.
 
-> **Executive Portfolio & Case Studies:** High-level executive summaries, architectural data-flow diagrams, and video walkthroughs are documented in the [Interactive Notion Showcase](https://your-portfolio-link-here.notion.site).
+> **Executive Portfolio & Case Studies:** High-level executive summaries, architectural data-flow diagrams, and video walkthroughs are documented in the [Interactive Notion Showcase](https://noordahche.notion.site/3bbb7e3e3278805baf42c18ce4171d66?v=3bbb7e3e327880bea9a0000c90fae676).
 
 ---
 
@@ -28,10 +27,10 @@ Security research in probabilistic systems requires empirical verification. Ever
 
 Vulnerabilities, threat trajectories, and mitigations are cross-referenced against core industry standards:
 
-* **OWASP Top 10 for LLM Applications (2026):** Application-layer risks and runtime systemic failures.
-* **MITRE ATLAS (v2026):** Adversarial tactics, techniques, and real-world AML attack procedures.
-* **NIST AI 100-2e2025:** Formal taxonomy of adversarial goals, capabilities, and data/model constraints.
-* **MITRE SAFE-AI:** Enterprise security control selection and assessment criteria (NIST SP 800-53 Rev. 5).
+- **OWASP Top 10 for LLM Applications (2026):** Application-layer risks and runtime systemic failures.
+- **MITRE ATLAS (v2026):** Adversarial tactics, techniques, and real-world AML attack procedures.
+- **NIST AI 100-2e2025:** Formal taxonomy of adversarial goals, capabilities, and data/model constraints.
+- **MITRE SAFE-AI:** Enterprise security control selection and assessment criteria (NIST SP 800-53 Rev. 5).
 
 ---
 
@@ -54,16 +53,17 @@ Vulnerabilities, threat trajectories, and mitigations are cross-referenced again
 
 ## Lab Architecture & Technical Stack
 
-* **Compute & Isolation:** Ubuntu Linux / WSL2, Docker Compose sandboxed networks, resource-constrained containers.
-* **Inference Engines:** Local open-weight models (Llama-3, Mistral, Qwen) executed via Ollama / vLLM.
-* **Orchestration & Retrieval:** Python 3.11+, LangChain, Model Context Protocol (MCP) SDK, ChromaDB, Qdrant.
-* **Adversarial & Audit Tooling:** `garak`, `PyRIT`, `picklescan`, `fickling`, `ModelScan`, Burp Suite Community, MCP Inspector.
+- **Compute & Isolation:** Ubuntu Linux / WSL2, Docker Compose sandboxed networks, resource-constrained containers.
+- **Inference Engines:** Local open-weight models (Llama-3, Mistral, Qwen) executed via Ollama / vLLM.
+- **Orchestration & Retrieval:** Python 3.11+, LangChain, Model Context Protocol (MCP) SDK, ChromaDB, Qdrant.
+- **Adversarial & Audit Tooling:** `garak`, `PyRIT`, `picklescan`, `fickling`, `ModelScan`, Burp Suite Community, MCP Inspector.
 
 ---
 
 ## Rules of Engagement & Ethical Boundaries
 
 All testing, scripts, and artifacts contained in this repository adhere to defensive research principles:
-* Execution is strictly confined to locally hosted, containerized environments or explicitly authorized practice platforms.
-* No tests are performed against third-party production APIs or public endpoints without prior written authorization.
-* All datasets, documents, and credentials utilized across scenarios are entirely synthetic.
+
+- Execution is strictly confined to locally hosted, containerized environments or explicitly authorized practice platforms.
+- No tests are performed against third-party production APIs or public endpoints without prior written authorization.
+- All datasets, documents, and credentials utilized across scenarios are entirely synthetic.
