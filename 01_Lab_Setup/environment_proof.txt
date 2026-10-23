@@ -1,0 +1,42 @@
+============================================================
+    AI RED TEAMING ENVIRONMENT & ASSET VERIFICATION REPORT   
+============================================================
+
+============================================================
+[1] PYTHON ENVIRONMENT & PACKAGES
+============================================================
+Python Executable: C:\Users\Dahsh\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe
+Python Version: 3.13.14
+Platform: Windows 11 (AMD64)
+[+] PyRIT: FOUND (Version: 1.1.0)
+[+] requests: 2.34.2
+[+] torch: 2.14.1+cpu
+[+] transformers: 5.19.0
+[+] langchain: 1.4.7
+[+] garak: 0.17.1
+
+============================================================
+[2] OLLAMA SERVICE & DOWNLOADED MODELS
+============================================================
+[+] Ollama API Status: ACTIVE at http://localhost:11434
+[+] Total Downloaded Models: 2
+
+  1. dolphin-llama3:latest     | Size:  4.34 GB | Modified: 2026-10-20
+  2. llama3.1:8b               | Size:  4.58 GB | Modified: 2026-10-20
+
+[+] Verification via 'ollama list' CLI output:
+NAME                     ID              SIZE      MODIFIED   
+dolphin-llama3:latest    613f068e29f8    4.7 GB    3 days ago    
+llama3.1:8b              46e0c10c039e    4.9 GB    3 days ago
+
+============================================================
+[3] MODEL RUNTIME OPERATIONAL PING
+============================================================
+[*] Testing inference for: dolphin-llama3:latest ...
+    -> [SUCCESS] Response: "OPERATIONAL" (Time: 9.52s)
+[*] Testing inference for: llama3.1:8b ...
+    -> [SUCCESS] Response: "OPERATIONAL" (Time: 8.15s)
+
+============================================================
+[+] Audit complete. Output written to: C:\Users\Dahsh\environment_proof.txt
+============================================================
