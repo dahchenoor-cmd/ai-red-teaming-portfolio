@@ -92,6 +92,31 @@ Target: Ollama :: llama3.1:8b | Category: encoding
 [!] encoding.InjectBase32   | DecodeMatch : FAIL (ASR: 0.39% | hit@5: 0.39%)
 ```
 
+
+---
+
+## Baseline Architecture Threat Map
+
+```text
+[ UNTRUSTED CLIENT ]               [ TRUST BOUNDARY ]              [ PRIVILEGED HOST SYSTEM ]
++-------------------+                                               +---------------------------+
+|                   |  Obfuscated Payload (Base16 / Ciphers)        |  System Prompt / Context  |
+|  Attacker / User  | ============================================> |  (Confidential Asset)     |
+|   (Entry Point)   |                                               +---------------------------+
+|                   | <============================================               |
++-------------------+             Model Completion                                v
+                                                                    +---------------------------+
+                                                                    |   Ollama Runtime Host     |
+                                                                    |   (llama3.1:8b Daemon)    |
+                                                                    +---------------------------+
+                                                                                  |
+                                                                    Local Compute / Memory
+                                                                                  v
+                                                                    +---------------------------+
+                                                                    |   OS & Hardware Resources |
+                                                                    |   (127.0.0.1:11434)       |
+                                                                    +---------------------------+
+
 ### Analytical Takeaways
 1. **Safety Alignment Degradation:** While `llama3.1:8b` refuses explicit plain-text restricted prompts, its refusal boundaries degrade under alternate token representations.
 2. **High-Risk Vector (Base16):** Hexadecimal encoding demonstrated the highest evasion rate (10.55% hit@5 on DecodeApprox), demonstrating that intermediate tokenization weakens safety classification before generation.
