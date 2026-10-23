@@ -1,8 +1,9 @@
+"""
 Automated Environment Verification Utility
 Role: Test environment baseline verification and runtime ping audit.
 Author/Source: AI-assisted automation script for AI Red Teaming Lab setup.
 Maintained by: Nooraldeen Dahshe
-
+"""
 import json
 import os
 import platform
@@ -10,7 +11,6 @@ import subprocess
 import sys
 import urllib.error
 import urllib.request
-
 OUTPUT_FILE = "environment_proof.txt"
 OLLAMA_BASE_URL = "http://localhost:11434"
 
