@@ -1,3 +1,8 @@
+Automated Environment Verification Utility
+Role: Test environment baseline verification and runtime ping audit.
+Author/Source: AI-assisted automation script for AI Red Teaming Lab setup.
+Maintained by: Nooraldeen Dahshe
+
 import json
 import os
 import platform
