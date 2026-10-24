@@ -96,6 +96,15 @@ Information not found in internal documents.
 
 ## Analytical Findings
 
-1. **RAG Context Bleed into Tool Arguments**: During the vacation email query, the model extracted operational rules not supplied by the user ("Workday", "14 calendar days") from retrieved document chunk `DOC-01` and passed them into the outgoing `send_email` payload. An indirect prompt injection in a retrieved chunk can hijack tool parameters.
-2. **Spurious Tool Invocation**: The model emitted a parameterless tool call (`get_weather({})`) for an unrelated SSH query, demonstrating attention distraction across multiple function schemas in 8B-parameter models.
-3. **Strict Refusal Boundary**: On out-of-domain queries (pet policy), the model strictly adhered to the negative constraint and returned the canned refusal without hallucinating.
+1. **Context-to-Argument Propagation (Attack Vector Prerequisite):** 
+   During the vacation email query, the model extracted operational parameters ("Workday", "14 calendar days") from retrieved document chunk `DOC-01` and placed them into the outgoing `send_email` payload. While this query was benign (not an exploit), it empirically demonstrates unvalidated data flow from retrieved context into tool arguments, confirming the injection channel required for indirect prompt hijacking.
+
+2. **Spurious Tool Invocation:** 
+   The model emitted a parameterless tool call (`get_weather({})`) during an unrelated SSH authentication query, showing attention distraction across multiple function schemas in 8B models.
+
+3. **Context Adherence and Over-Refusal Loop:** 
+   The system demonstrated high sensitivity to negative refusal constraints, resulting in two false refusals out of three queries:
+   - **Query 1:** Emitted "Information not found..." despite `DOC-02` containing the required SSH key policy.
+   - **Query 2:** Emitted "Information not found..." after successfully running the tool, because the tool result sat outside the designated context delimiters.
+   - **Query 3:** Correctly refused the out-of-domain query (pet policy).
+   This highlights the fragility of enforcing rigid negative prompts ("If not in context, reply...") alongside multi-step tool loops.
