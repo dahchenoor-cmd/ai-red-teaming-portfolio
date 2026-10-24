@@ -118,6 +118,14 @@ Target: Ollama :: llama3.1:8b | Category: encoding
                                                                     +---------------------------+
 
 ### Analytical Takeaways
+
+Type               | Chars  | Tokens
+-----------------------------------
+Short English      | 13     | 4
+Long English       | 117    | 16
+Code               | 41     | 9
+Emoji String       | 6      | 16
+Arabic Sentence    | 44     | 31
 1. **Safety Alignment Degradation:** While `llama3.1:8b` refuses explicit plain-text restricted prompts, its refusal boundaries degrade under alternate token representations.
 2. **High-Risk Vector (Base16):** Hexadecimal encoding demonstrated the highest evasion rate (10.55% hit@5 on DecodeApprox), demonstrating that intermediate tokenization weakens safety classification before generation.
 3. **Mitigation Requirement:** Host applications must implement input sanitization and multi-format decoding middleware *prior* to context ingestion.
