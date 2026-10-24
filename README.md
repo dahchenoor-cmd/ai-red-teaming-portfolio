@@ -13,7 +13,7 @@ A self-directed repository of adversarial machine learning assessments, proofs-o
 
 ## Operational Scope & Methodology
 
-Security research in probabilistic systems requires empirical verification. Every module and finding in this repository adheres to a strict 5-point assessment standard:
+Every module aims to meet this 5-point assessment standard. Modules 01 to 04 are single-run observations and are marked as such :
 
 1. **Target Architecture & Scope:** Host environment, inference runtime (e.g., Ollama, vLLM), orchestration frameworks, vector databases, and tooling boundaries.
 2. **Threat Model & Trust Boundaries:** Input vectors, privilege zones, downstream sinks, and system elements (`Environment`, `Platform`, `Model`, `Data`).
