@@ -33,6 +33,7 @@ Vulnerabilities, threat trajectories, and mitigations are cross-referenced again
 - **MITRE SAFE-AI:** Enterprise security control selection and assessment criteria (NIST SP 800-53 Rev. 5).
 
 ---
+## Repository Index
 
 | # | Status | Module Name | Primary Attack Surface | Core Threat Vectors | Standards Mapping |
 | --- | --- | --- | --- | --- | --- |
