@@ -13,7 +13,7 @@ A self-directed repository of adversarial machine learning assessments, proofs-o
 
 ## Operational Scope & Methodology
 
-Every module aims to meet this 5-point assessment standard. Modules 01 to 04 are single-run observations and are marked as such :
+Every module aims to meet this 5-point assessment standard. “Modules Modules 02 and 03 are single-run observations and are marked as such:”
 
 1. **Target Architecture & Scope:** Host environment, inference runtime (e.g., Ollama, vLLM), orchestration frameworks, vector databases, and tooling boundaries.
 2. **Threat Model & Trust Boundaries:** Input vectors, privilege zones, downstream sinks, and system elements (`Environment`, `Platform`, `Model`, `Data`).
@@ -56,6 +56,7 @@ Vulnerabilities, threat trajectories, and mitigations are cross-referenced again
 | **17** | Planned | AI Infrastructure and Deployment Exploits | Model Serving Runtimes (vLLM, Ollama, Triton) | Unauthenticated REST APIs, server-side request forgery (SSRF), container escapes, GPU memory leakage | LLM06:2026, CWE-306, CWE-918, NIST SP 800-53 SC-5 |
 | **18** | Planned | Threat Modeling for AI-Enabled Targets | Architecture & System Data Flow Diagrams (DFDs) | STRIDE / MAESTRO boundary violations, untrusted data flow analysis, component interaction risks | NIST AI RMF, MITRE ATLAS, ISO/IEC 42001 |
 | **19** | Planned | Capstone Red Team Engagement | Enterprise End-to-End LLM Ecosystem | Multi-stage kill chain, lateral movement across agents, exfiltration of canary assets, comprehensive audit | NIST SP 800-53A, OWASP LLM Top 10 (2026), MITRE ATLAS |
+
 ---
 
 ## Lab Architecture & Technical Stack
