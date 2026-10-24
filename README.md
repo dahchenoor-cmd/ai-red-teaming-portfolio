@@ -28,7 +28,7 @@ Security research in probabilistic systems requires empirical verification. Ever
 Vulnerabilities, threat trajectories, and mitigations are cross-referenced against core industry standards:
 
 - **OWASP Top 10 for LLM Applications (2026):** Application-layer risks and runtime systemic failures.
-- *** MITRE ATLAS (content version 2026.07):** Adversarial tactics, techniques, and real-world AML attack procedures.
+- **MITRE ATLAS (content version 2026.07):** Adversarial tactics, techniques, and real-world AML attack procedures.
 - **NIST AI 100-2e2025:** Formal taxonomy of adversarial goals, capabilities, and data/model constraints.
 - **MITRE SAFE-AI:** Enterprise security control selection and assessment criteria (NIST SP 800-53 Rev. 5).
 
