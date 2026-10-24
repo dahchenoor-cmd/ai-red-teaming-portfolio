@@ -118,7 +118,7 @@ Target: Ollama :: llama3.1:8b | Category: encoding
                                                            |   (127.0.0.1:11434)    |
                                                            +------------------------+
 
-### Tokenization Analysis
+###Tokenization Analysis
 
 
 Type               | Chars  | Tokens | Ratio
