@@ -5,7 +5,7 @@
 [![NIST AI 100-2](https://img.shields.io/badge/NIST-AI%20100--2e2025-green.svg)](https://doi.org/10.6028/NIST.AI.100-2e2025)
 [![MITRE SAFE-AI](https://img.shields.io/badge/MITRE-SAFE--AI%20(NIST%20800--53)-red.svg)](https://atlas.mitre.org/pdf-files/SAFEAI_Full_Report.pdf)
 
-A self-directed repository of adversarial machine learning assessments, proofs-of-concept and defensive mitigations on a local LLM lab. Modules 01 to 04 are complete; the rest are planned. Every module is tested on local, synthetic systems only..
+A self-directed repository of adversarial machine learning assessments, proofs-of-concept and defensive mitigations on a local LLM lab. Modules 01 to 04 are complete; the rest are planned. Every module is tested on local, synthetic systems only.
 
 > **Executive Portfolio & Case Studies:** High-level executive summaries, architectural data-flow diagrams, and video walkthroughs are documented in the [Interactive Notion Showcase](https://noordahche.notion.site/3bbb7e3e3278805baf42c18ce4171d66?v=3bbb7e3e327880bea9a0000c90fae676).
 
