@@ -162,4 +162,4 @@ Establish the formal threat model, trust boundary maps, regulatory framework ali
 2. **Initial Access (`AML.TA0004`):** Submitting a user prompt containing delimiters (`--- START RETRIEVED CONTEXT ---`) to spoof application formatting.
 3. **Execution (`AML.TA0005`):** Running an adversarial jailbreak payload that causes the model to ignore safety alignment rules.
 4. **Persistence (`AML.TA0006`):** Injecting a poisoned policy chunk into a company wiki that is subsequently indexed into the RAG vector store.
-5. 5. **Exfiltration (`AML.TA0010`):** Forcing the model to invoke `send_email` with internal system canaries populated in the payload body.
+5. **Exfiltration (`AML.TA0010`):** Forcing the model to invoke `send_email` with internal system canaries populated in the payload body.
