@@ -59,20 +59,22 @@ Establish the formal threat model, trust boundary maps, regulatory framework ali
 
 ---
 
-## Lab 2: OWASP Top 10 for LLM Applications Mapping
+## Lab 2: OWASP Top 10 for LLM Applications
 
-| OWASP ID | Vulnerability Title | Application Relevance & Injection Surface | Boundary Node |
-| --- | --- | --- | --- |
+| OWASP 2026 ID | Risk Title (2026) | Application Relevance & Injection Surface | Boundary Node |
+| :--- | :--- | :--- | :--- |
 | **LLM01** | Prompt Injection | User input or poisoned RAG chunks override system prompt directives to extract secrets. | Boundaries 1 & 2 |
-| **LLM02** | Sensitive Information Disclosure | The model leaks the canary token (`DELTA-909-OBSIDIAN`) or private M&A data (Project Bluebird). | Boundary 3 |
-| **LLM03** | Supply Chain Weaknesses | Backdoored base weights pulled via Ollama (`llama3.1:8b`) or malicious embedding adapters. | Model Host |
-| **LLM04** | Data and Model Poisoning | Attacker modifies corporate files (`DOC-01` to `DOC-05`) to inject malicious operational policies. | Boundary 2 |
-| **LLM05** | Improper Output Handling | Model outputs raw text on refusal, triggering unhandled JSON decode exceptions in the host app. | Boundary 1 / App |
-| **LLM06** | Excessive Agency | The model executes `send_email()` autonomously without a Human-in-the-Loop (HITL) approval gate. | Boundary 4 |
-| **LLM07** | System Prompt Leakage | Direct queries manipulate the model into printing the Atlas role instructions verbatim. | Boundary 3 |
-| **LLM08** | Vector and Embedding Weaknesses | Cosine similarity collision attacks force malicious chunks into the top-3 retrieval slots. | Boundary 2 |
-| **LLM09** | Misinformation / Hallucination | Model generates false policy guidance when retrieval chunks return low similarity scores. | Boundary 3 |
-| **LLM10** | Unbounded Consumption | Large prompt payloads exhaust host VRAM, causing local inference denial-of-service. | Boundary 1 |
+| **LLM02** | Sensitive Information Disclosure | The model leaks the canary token (`DELTA-909-OBSIDIAN`) or private M&A data (`Project Bluebird`). | Boundary 3 |
+| **LLM03** | Excessive Agency | The model executes `send_email()` autonomously without a Human-in-the-Loop (HITL) approval gate. | Boundary 4 |
+| **LLM04** | Supply Chain | Backdoored base weights pulled via Ollama (`llama3.1:8b`) or malicious embedding adapters. | Model Host |
+| **LLM05** | Data and Model Poisoning | Attacker modifies corporate files (`DOC-01` to `DOC-05`) to inject malicious operational policies. | Boundary 2 |
+| **LLM06** | Unbounded Consumption | Large prompt payloads exhaust host VRAM, causing local inference denial-of-service. | Boundary 1 |
+| **LLM07** | Misinformation | Model generates false policy guidance when retrieval chunks return low similarity scores. | Boundary 3 |
+| **LLM08** | Hidden Context Exposure | Direct queries manipulate the model into printing internal developer instructions and persona rules. | Boundary 3 |
+| **LLM09** | Vector and Embedding Weaknesses | Cosine similarity collision attacks force malicious chunks into top retrieval positions. | Boundary 2 |
+| **LLM10** | Improper Output Handling | Model outputs raw text on refusal, triggering unhandled JSON decode exceptions in the host app. | Boundary 1 / App |
+
+---
 
 ---
 
@@ -86,15 +88,17 @@ Establish the formal threat model, trust boundary maps, regulatory framework ali
 
 ---
 
-## Lab 4: Observability & Logging Architecture
 
-| Telemetry Target | Captured Data Fields | Storage Target | OWASP Detection Utility |
-| --- | --- | --- | --- |
-| **Ingress Prompts** | Raw text, timestamp, source IP, token length | `ingress_audit.log` | LLM01, LLM10 (Jailbreak patterns, resource exhaustion) |
-| **Retrieval Hits** | Query vector, retrieved chunk IDs, similarity scores | `rag_retrieval.log` | LLM04, LLM08 (RAG poisoning, similarity drift) |
-| **Raw Model Output** | Token stream, inference duration, stop reason | `model_raw.log` | LLM02, LLM07 (Canary disclosure, prompt leakage) |
-| **Tool Invocations** | Function name, parsed arguments, return payload | `tool_execution.log` | LLM06 (Unauthorized email dispatch, tool tampering) |
-| **Application Errors** | `JSONDecodeError` stack traces, dropped payloads | `app_exceptions.log` | LLM05 (Downstream parser crashes / Parser DoS) |
+
+## Lab 4: Observability & Logging Architecture 
+
+| Telemetry Target | Captured Data Fields | Storage Target | OWASP Detection Utility (2026) |
+| :--- | :--- | :--- | :--- |
+| **Ingress Prompts** | Raw text, timestamp, source IP, token length | `ingress_audit.log` | **LLM01, LLM06** (Jailbreak patterns, unbounded consumption) |
+| **Retrieval Hits** | Query vector, retrieved chunk IDs, similarity scores | `rag_retrieval.log` | **LLM05, LLM09** (Data poisoning, vector weaknesses) |
+| **Raw Model Output** | Token stream, inference duration, stop reason | `model_raw.log` | **LLM02, LLM08** (Canary disclosure, hidden context exposure) |
+| **Tool Invocations** | Function name, parsed arguments, return payload | `tool_execution.log`| **LLM03** (Excessive agency, unauthorized dispatch) |
+| **Application Errors** | JSONDecodeError stack traces, dropped payloads | `app_exceptions.log`| **LLM10** (Improper output handling / downstream parser crashes) |
 
 ---
 
