@@ -83,8 +83,8 @@ Establish the formal threat model, trust boundary maps, regulatory framework ali
 | ATLAS ID | Tactic | Technique Name | Exploitation Vector in Local Stack |
 | --- | --- | --- | --- |
 | **AML.T0051** | Execution | LLM Prompt Injection | Injecting escape markers inside the interactive user chat to override Atlas persona rules. |
-| **AML.T0054** | Persistence | LLM Data Poisoning | Injecting secondary instructions into knowledge documents stored in the vector database. |
-| **AML.T0053** | Privilege Escalation | LLM Excessive Agency | Hijacking the `send_email` tool arguments to exfiltrate canary secrets to external recipients. |
+| **AML.T0051.001** | Execution | LLM Prompt Injection: Indirect | Injecting secondary instructions into knowledge documents stored in the vector database. |
+| **AML.T0053** | Execution | AI Agent Tool Invocation (formerly LLM Plugin Compromise) | Hijacking the `send_email` tool arguments to exfiltrate canary secrets to external recipients. |
 
 ---
 
@@ -162,4 +162,4 @@ Establish the formal threat model, trust boundary maps, regulatory framework ali
 2. **Initial Access (`AML.TA0004`):** Submitting a user prompt containing delimiters (`--- START RETRIEVED CONTEXT ---`) to spoof application formatting.
 3. **Execution (`AML.TA0005`):** Running an adversarial jailbreak payload that causes the model to ignore safety alignment rules.
 4. **Persistence (`AML.TA0006`):** Injecting a poisoned policy chunk into a company wiki that is subsequently indexed into the RAG vector store.
-5. **Exfiltration (`AML.TA0011`):** Forcing the model to invoke `send_email` with internal system canaries populated in the payload body.
+5. 5. **Exfiltration (`AML.TA0010`):** Forcing the model to invoke `send_email` with internal system canaries populated in the payload body.
