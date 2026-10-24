@@ -1,8 +1,7 @@
 # Module 4: Security Considerations and the AI Red Team Lifecycle
 
 ## Objective
-
-Establish the formal threat model, trust boundary maps, regulatory framework alignments (OWASP Top 10 for LLMs 2025, MITRE ATLAS), telemetry logging architecture, and Rules of Engagement (RoE) for the local RAG chatbot ecosystem.
+Establish the formal threat model, trust boundary maps, regulatory framework alignments (OWASP Top 10 for LLM Applications 2025/2026, MITRE ATLAS), telemetry logging architecture, and Rules of Engagement (RoE) for the local RAG chatbot ecosystem.
 
 ---
 
