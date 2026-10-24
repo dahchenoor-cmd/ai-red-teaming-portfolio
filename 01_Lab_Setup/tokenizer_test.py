@@ -1,6 +1,9 @@
-
-
-
+"""
+Automated Environment Verification Utility
+Role: Test environment baseline verification and runtime ping audit.
+Author/Source: AI-assisted automation script for AI Red Teaming Lab setup.
+Maintained by: Nooraldeen Dahshe
+"""
 import tiktoken
 
 enc = tiktoken.get_encoding("cl100k_base")
