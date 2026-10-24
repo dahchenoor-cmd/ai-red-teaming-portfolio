@@ -140,7 +140,7 @@ Establish the formal threat model, trust boundary maps, regulatory framework ali
 
 ### 2. What Turns Prompt Injection from Annoying into Serious?
 
-* **Access to Impactful Side Effects (Tools & Data):** Prompt injection inside a closed conversational sandbox only results in unusual text on a screen. The moment the LLM is connected to tools (database access, file writes, email dispatch, APIs) or private data stores (RAG databases), prompt injection turns into Remote Code Execution / Unauthorized Action Execution via natural language.
+* **Access to Impactful Side Effects (Tools & Data):** Prompt injection inside a closed conversational sandbox only results in unusual text on a screen. The moment the LLM is connected to tools (database access, file writes, email dispatch, APIs) or private data stores (RAG databases), prompt injection turns into  Unauthorized Action Execution via natural language.
 
 ### 3. Why is Indirect Injection Harder to Defend than Direct Injection?
 
