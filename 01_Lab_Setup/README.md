@@ -117,19 +117,23 @@ Target: Ollama :: llama3.1:8b | Category: encoding
                                                                     |   (127.0.0.1:11434)       |
                                                                     +---------------------------+
 
-### Analytical Takeaways
 
-Type               | Chars  | Tokens
------------------------------------
-Short English      | 13     | 4
-Long English       | 117    | 16
-Code               | 41     | 9
-Emoji String       | 6      | 16
-Arabic Sentence    | 44     | 31
-1. **Safety Alignment Degradation:** While `llama3.1:8b` refuses explicit plain-text restricted prompts, its refusal boundaries degrade under alternate token representations.
-2. **High-Risk Vector (Base16):** Hexadecimal encoding demonstrated the highest evasion rate (10.55% hit@5 on DecodeApprox), demonstrating that intermediate
-tokenization weakens safety classification before generation.
-3. **Mitigation Requirement:** Host applications must implement input sanitization and multi-format decoding middleware *prior* to context ingestion.
+
+
+
+
+### Tokenization Analysis
+| Type | Chars | Tokens | Ratio |
+|---|---|---|---|
+| Short English | 13 | 4 | 0.31 |
+| Long English | 117 | 16 | 0.14 |
+| Code | 41 | 9 | 0.22 |
+| Emoji String | 6 | 16 | 2.67 |
+| Arabic Sentence | 44 | 31 | 0.70 |
+
+**Analytical Takeaway:** Emojis and non-Latin scripts (Arabic) consume significantly more tokens per character due to sub-word tokenization splits, directly increasing latency, rate-limit consumption, and inferencing costs.
+
+---
 
 ### Temperature Variance Evaluation (10 Runs per Setting)
 - **Target Model:** `llama3.1:8b`
@@ -149,10 +153,4 @@ tokenization weakens safety classification before generation.
 | 10 | Protection | Vigilance |
 | **Unique Outputs** | **1/10 (Deterministic)** | **2/10 (Stochastic Variance)** |
 
-*Observation:* Temperature 0 enforces zero-entropy greedy decoding, essential for benchmarking reproducibility during red team assessments. Temperature 1 introduces token sampling dispersion across higher-probability logits.
-
-
-
-
-
-
+**Analytical Takeaway:** Setting `temperature=0` enforces deterministic greedy decoding, which is essential for reproducible benchmarking and regression testing against LLM targets. Higher temperatures introduce token sampling variance across the candidate probability distribution.
