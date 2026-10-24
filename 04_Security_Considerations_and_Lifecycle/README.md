@@ -36,7 +36,7 @@ Establish the formal threat model, trust boundary maps, regulatory framework ali
        +---------------------------------+
        |  Inference Engine (Ollama Host) |
        |  - Model: llama3.1:8b           |
-       |  - Non-deterministic Attention  |
+       |  - Stochastic sampling          |
        +---------------------------------+
           |
           | (Function Execution Request)
