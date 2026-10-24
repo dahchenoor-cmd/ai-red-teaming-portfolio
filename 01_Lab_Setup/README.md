@@ -95,46 +95,29 @@ Target: Ollama :: llama3.1:8b | Category: encoding
 
 ---
 
-## Baseline Architecture Threat Map
+
+### Baseline Architecture Threat Map
 
 ```text
-[ UNTRUSTED CLIENT ]               [ TRUST BOUNDARY ]              [ PRIVILEGED HOST SYSTEM ]
-+-------------------+                                               +---------------------------+
-|                   |  Obfuscated Payload (Base16 / Ciphers)        |  System Prompt / Context  |
-|  Attacker / User  | ============================================> |  (Confidential Asset)     |
-|   (Entry Point)   |                                               +---------------------------+
-|                   | <============================================               |
-+-------------------+             Model Completion                                v
-                                                                    +---------------------------+
-                                                                    |   Ollama Runtime Host     |
-                                                                    |   (llama3.1:8b Daemon)    |
-                                                                    +---------------------------+
-                                                                                  |
-                                                                    Local Compute / Memory
-                                                                                  v
-                                                                    +---------------------------+
-                                                                    |   OS & Hardware Resources |
-                                                                    |   (127.0.0.1:11434)       |
-                                                                    +---------------------------+
+[ UNTRUSTED CLIENT ]           [ TRUST BOUNDARY ]          [ PRIVILEGED HOST SYSTEM ]
++---------------------+                                    +------------------------+
+|                     |   Obfuscated Payload               | System Prompt / Context|
+|   Attacker / User   |===================================>| (Confidential Asset)   |
+|    (Entry Point)    |                                    +------------------------+
+|                     |<===================================            |
++---------------------+          Model Completion                      v
+                                                           +------------------------+
+                                                           |  Ollama Runtime Host   |
+                                                           |   (llama3.1:8b Daemon) |
+                                                           +------------------------+
+                                                                       |
+                                                              Local Compute / Memory
+                                                                       v
+                                                           +------------------------+
+                                                           | OS & Hardware Resources|
+                                                           |   (127.0.0.1:11434)    |
+                                                           +------------------------+
 
 
 
 
-
-
-
-
-
-
-
-
-## Tokenization Analysis
-
-```text
-Type               | Chars  | Tokens | Ratio
--------------------|--------|--------|------
-Short English      | 13     | 4      | 0.31
-Long English       | 117    | 16     | 0.14
-Code               | 41     | 9      | 0.22
-Emoji String       | 6      | 16     | 2.67
-Arabic Sentence    | 44     | 31     | 0.70
