@@ -120,6 +120,8 @@ Target: Ollama :: llama3.1:8b | Category: encoding
 ### Tokenization Analysis
 
 
+
+```text 
 Type               | Chars  | Tokens | Ratio
 -------------------|--------|--------|------
 Short English      | 13     | 4      | 0.31
