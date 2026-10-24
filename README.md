@@ -34,30 +34,27 @@ Vulnerabilities, threat trajectories, and mitigations are cross-referenced again
 
 ---
 
-## Repository Index
-
-| # | Module Name | Primary Attack Surface | Core Threat Vectors | Standards Mapping |
-| --- | --- | --- | --- | --- |
-| **01** | Introduction to LLMs | Tokenizer & Inference Runtime Primitives | Token fragmentation, context window truncation, decoding temperature variance | AML.T0040, AML.T0043 |
-| **02** | Working with LLMs | Chatbot Architecture & State Management | Role confusion, system prompt leakage, conversation state manipulation, keyword filter evasion | LLM07, AML.T0051, CWE-200 |
-| **03** | Extending and Customizing LLMs | Basic RAG Context & Function Calling | Context bleed into tool parameters, spurious tool invocation, data boundary collapse | LLM01, LLM06, AML.T0051 |
-| **04** | Security Considerations and the AI Red Team Lifecycle | Threat Model & Red Team Governance | Trust boundary violations, telemetry evasion, unmonitored side-effect execution | NIST AI RMF, OWASP LLM Top 10, MITRE ATLAS |
-| **05** | Reconnaissance and Enumeration | Public Endpoints & Model Serving APIs | Stack fingerprinting, context window probing, unauthenticated API route enumeration, model extraction | AML.TA0002, AML.T0008, CWE-200 |
-| **06** | LLM Jailbreaking | Direct User Ingress & Alignment Guardrails | Persona adoption, cognitive hacking, multi-turn crescendo attacks, cipher/encoding obfuscation | LLM01, AML.T0051, AML.T0054 |
-| **07** | Prompt Injection | Delimiters, Prompt Assembler & Ingestion | Direct system override, delimiter spoofing, virtual virtualization, boundary breaking | LLM01, AML.T0051, CWE-77 |
-| **08** | Improper Output Handling | Downstream Consumers & Application Parsers | Cross-Site Scripting (XSS), SQLi/Command Injection via generated payload, unhandled JSON parser DoS | LLM05, CWE-79, CWE-116 |
-| **09** | Excessive Agency | Autonomous Tool Execution & API Permissions | Missing human-in-the-loop (HITL), excessive write privileges, unintended side-effect execution | LLM06, AML.T0053, CWE-250 |
-| **10** | Unbounded Consumption | Compute, Memory & Context Budget | Denial of Wallet (DoW), thinking-token exhaustion, context window bloating, resource DoS | LLM10, AML.T0034, CWE-400 |
-| **11** | Attacking AI Agents | Autonomous Decision Loop & Reasoning Chains (ReAct) | Plan hijacking, memory state corruption, feedback loop manipulation, goal redirection | LLM01, LLM06, AML.T0051 |
-| **12** | Multi-Agent Systems and A2A | Inter-Agent Communication (A2A) Protocols | Rogue agent impersonation, cross-agent privilege propagation, malicious agent card injection | ASI01, ASI07, AML.T0054 |
-| **13** | Exploiting RAG Pipelines | Vector Database & Document Ingestion | Indirect prompt injection via poisoned documents, knowledge base corruption, retrieval context hijacking | LLM01, LLM04, AML.T0054 |
-| **14** | Attacking Embeddings | Embedding Models & Semantic Vector Space | Embedding inversion (Vec2Text), semantic collision attacks, similarity ranking manipulation | LLM08, AML.T0070, CWE-327 |
-| **15** | MCP and Tool Surfaces | Model Context Protocol (MCP) Host/Client/Server | Tool schema poisoning, malicious capability advertisement, runtime parameter command injection | LLM03, LLM06, CWE-78 |
-| **16** | Supply Chain Attacks | Model Hubs, Adapters & Dependencies | Arbitrary code execution via pickled weights (`.pt`/`.bin`), backdoored LoRA adapters, poisoned dependencies | LLM03, AML.T0010, CWE-494 |
-| **17** | AI Infrastructure and Deployment Exploits | Model Serving Runtimes (vLLM, Ollama, Triton) | Unauthenticated REST APIs, server-side request forgery (SSRF), container escapes, GPU memory leakage | LLM10, AML.T0034, SC-05 |
-| **18** | Threat Modeling for AI-Enabled Targets | Architecture & System Data Flow Diagrams (DFDs) | STRIDE / MAESTRO boundary violations, untrusted data flow analysis, component interaction risks | NIST AI RMF, MITRE ATLAS, ISO/IEC 42001 |
-| **19** | Capstone Red Team Engagement | Enterprise End-to-End LLM Ecosystem | Multi-stage kill chain, lateral movement across agents, exfiltration of canary assets, comprehensive audit | NIST SP 800-53A, OWASP LLM Top 10, MITRE ATLAS |
-
+| # | Status | Module Name | Primary Attack Surface | Core Threat Vectors | Standards Mapping |
+| --- | --- | --- | --- | --- | --- |
+| **01** | Done | Introduction to LLMs | Tokenizer & Inference Runtime Primitives | Token fragmentation, context window truncation, decoding temperature variance | Foundations (no direct mapping) |
+| **02** | Done | Working with LLMs | Chatbot Architecture & State Management | Role confusion, system prompt leakage, conversation state manipulation, keyword filter evasion | LLM08:2026, LLM01:2026, AML.T0051, AML.T0056, CWE-200 |
+| **03** | Done | Extending and Customizing LLMs | Basic RAG Context & Function Calling | Context bleed into tool parameters, spurious tool invocation, data boundary collapse | LLM01:2026, LLM03:2026, AML.T0051, AML.T0053 |
+| **04** | Done | Security Considerations and the AI Red Team Lifecycle | Threat Model & Red Team Governance | Trust boundary violations, telemetry evasion, unmonitored side-effect execution | NIST AI RMF, OWASP LLM Top 10 (2026), MITRE ATLAS |
+| **05** | Planned | Reconnaissance and Enumeration | Public Endpoints & Model Serving APIs | Stack fingerprinting, context window probing, unauthenticated API route enumeration, model extraction | AML.TA0002, AML.T0006, LLM08:2026, CWE-200 |
+| **06** | Planned | LLM Jailbreaking | Direct User Ingress & Alignment Guardrails | Persona adoption, cognitive hacking, multi-turn crescendo attacks, cipher/encoding obfuscation | LLM01:2026, AML.T0051, AML.T0054 |
+| **07** | Planned | Prompt Injection | Delimiters, Prompt Assembler & Ingestion | Direct system override, delimiter spoofing, simulated-context framing, boundary breaking | LLM01:2026, AML.T0051.000, AML.T0051.001, CWE-77 |
+| **08** | Planned | Improper Output Handling | Downstream Consumers & Application Parsers | Cross-Site Scripting (XSS), SQLi/Command Injection via generated payload, unhandled JSON parser DoS | LLM10:2026, CWE-79, CWE-89, CWE-116 |
+| **09** | Planned | Excessive Agency | Autonomous Tool Execution & API Permissions | Missing human-in-the-loop (HITL), excessive write privileges, unintended side-effect execution | LLM03:2026, AML.T0053, CWE-250 |
+| **10** | Planned | Unbounded Consumption | Compute, Memory & Context Budget | Denial of Wallet (DoW), thinking-token exhaustion, context window bloating, resource DoS | LLM06:2026, CWE-400 |
+| **11** | Planned | Attacking AI Agents | Autonomous Decision Loop & Reasoning Chains (ReAct) | Plan hijacking, memory state corruption, feedback loop manipulation, goal redirection | LLM01:2026, LLM03:2026, ASI01, AML.T0051 |
+| **12** | Planned | Multi-Agent Systems and A2A | Inter-Agent Communication (A2A) Protocols | Rogue agent impersonation, cross-agent privilege propagation, malicious agent card injection | OWASP Agentic Top 10 (ASI01), AML.T0051 |
+| **13** | Planned | Exploiting RAG Pipelines | Vector Database & Document Ingestion | Indirect prompt injection via poisoned documents, knowledge base corruption, retrieval context hijacking | LLM01:2026, LLM05:2026, AML.T0051.001, AML.T0070 |
+| **14** | Planned | Attacking Embeddings | Embedding Models & Semantic Vector Space | Embedding inversion (Vec2Text), semantic collision attacks, similarity ranking manipulation | LLM09:2026, LLM02:2026, CWE-200 |
+| **15** | Planned | MCP and Tool Surfaces | Model Context Protocol (MCP) Host/Client/Server | Tool schema poisoning, malicious capability advertisement, runtime parameter command injection | LLM03:2026, AML.T0053, OWASP MCP Top 10, CWE-78 |
+| **16** | Planned | Supply Chain Attacks | Model Hubs, Adapters & Dependencies | Arbitrary code execution via pickled weights (`.pt`/`.bin`), backdoored LoRA adapters, poisoned dependencies | LLM04:2026, LLM05:2026, AML.T0010, CWE-494 |
+| **17** | Planned | AI Infrastructure and Deployment Exploits | Model Serving Runtimes (vLLM, Ollama, Triton) | Unauthenticated REST APIs, server-side request forgery (SSRF), container escapes, GPU memory leakage | LLM06:2026, CWE-306, CWE-918, NIST SP 800-53 SC-5 |
+| **18** | Planned | Threat Modeling for AI-Enabled Targets | Architecture & System Data Flow Diagrams (DFDs) | STRIDE / MAESTRO boundary violations, untrusted data flow analysis, component interaction risks | NIST AI RMF, MITRE ATLAS, ISO/IEC 42001 |
+| **19** | Planned | Capstone Red Team Engagement | Enterprise End-to-End LLM Ecosystem | Multi-stage kill chain, lateral movement across agents, exfiltration of canary assets, comprehensive audit | NIST SP 800-53A, OWASP LLM Top 10 (2026), MITRE ATLAS |
 ---
 
 ## Lab Architecture & Technical Stack
