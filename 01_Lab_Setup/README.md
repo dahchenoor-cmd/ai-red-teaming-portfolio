@@ -117,18 +117,7 @@ Target: Ollama :: llama3.1:8b | Category: encoding
                                                            | OS & Hardware Resources|
                                                            |   (127.0.0.1:11434)    |
                                                            +------------------------+
-### Tokenization Analysis
 
-
-
-```text 
-Type               | Chars  | Tokens | Ratio
--------------------|--------|--------|------
-Short English      | 13     | 4      | 0.31
-Long English       | 117    | 16     | 0.14
-Code               | 41     | 9      | 0.22
-Emoji String       | 6      | 16     | 2.67
-Arabic Sentence    | 44     | 31     | 0.70
 
 
 
