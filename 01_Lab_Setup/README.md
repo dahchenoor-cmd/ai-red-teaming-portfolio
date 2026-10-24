@@ -112,6 +112,29 @@ Target: Ollama :: llama3.1:8b | Category: encoding
                                                                        |
                                                               Local Compute / Memory
 
+
+
+
+
+
+
+
+
+========================================================================================
+TOKENIZATION BENCHMARK (cl100k_base)
+========================================================================================
+Input Type          | Character Count | Token Count | Token-to-Char Ratio
+--------------------+-----------------+-------------+--------------------
+Short English       | 13              | 4           | 0.31
+Long English        | 117             | 16          | 0.14
+Code Snippet        | 41              | 9           | 0.22
+Emoji String        | 6               | 16          | 2.67
+Arabic Sentence     | 44              | 31          | 0.70
+========================================================================================
+Key Finding: Non-Latin scripts and emojis result in severe token fragmentation, inflating 
+prompt size and API consumption.
+========================================================================================
+
                                                                        v
                                                            +------------------------+
                                                            | OS & Hardware Resources|
