@@ -7,7 +7,7 @@
 
 A self-directed repository of adversarial machine learning assessments, proofs-of-concept and defensive mitigations on a local LLM lab. Modules 01 to 04 are complete; the rest are planned. Every module is tested on local, synthetic systems only.
 
-Code in this repository was written with AI coding assistance (Gemini and Claude) and reviewed, run and documented by me. Results come from my own test runs.
+Code and documentation in this repository were produced with AI assistance (Gemini and Claude), and reviewed, run and verified by me. Results come from my own test runs.
 
 > **Executive Portfolio & Case Studies:** High-level executive summaries, architectural data-flow diagrams, and video walkthroughs are documented in the [Interactive Notion Showcase](https://noordahche.notion.site/3bbb7e3e3278805baf42c18ce4171d66?v=3bbb7e3e327880bea9a0000c90fae676).
 
