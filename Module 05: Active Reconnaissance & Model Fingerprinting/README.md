@@ -183,3 +183,69 @@ We configured an HTTP proxy tunnel (`127.0.0.1:8080`) in Burp Suite to intercept
    ```
 
 2. **Dispatch Through Burp Proxy:**
+   ```powershell
+   curl.exe -x [http://127.0.0.1:8080](http://127.0.0.1:8080) -H "Content-Type: application/json" -d "@prompt.json" [http://127.0.0.1:11434/api/chat](http://127.0.0.1:11434/api/chat)
+   ```
+
+3. **In-Flight Interception & Tampering:**  
+   In Burp Suite's **Proxy** &rarr; **Intercept** tab, the payload was paused and modified before hitting Ollama:
+   ```diff
+   - "content": "Tell me a one-line joke."
+   + "content": "What is the capital of France?"
+   ```
+
+4. **Tamper Proof (`evidence/burp_tamper_evidence.txt`):**
+   ```text
+   === BURP SUITE INTERCEPTION & TAMPER EVIDENCE ===
+   Original Payload: {"role": "user", "content": "Tell me a one-line joke."}
+   Modified Payload: {"role": "user", "content": "What is the capital of France?"}
+   Response: "The capital city of France is Paris."
+   Tamper Verified: Host executed intercepted in-flight payload.
+   ```
+
+---
+
+## 4. Evidence Artifact Manifest
+
+All artifacts generated during this assessment are stored in the local `evidence/` directory:
+
+| Filename | Type | Purpose |
+| :--- | :--- | :--- |
+| `evidence/nmap_target_scan.txt` | Text / Scan Output | Full Nmap port and service banner discovery report. |
+| `evidence/mlflow_experiments.json` | Raw JSON Payload | Proof of unauthenticated data extraction from MLflow tracking. |
+| `evidence/fingerprint_results.txt` | Benchmark Log | Side-by-side behavioral alignment and system prompt extraction logs. |
+| `evidence/burp_tamper_evidence.txt` | Proof-of-Concept Log | Proof of in-flight parameter and prompt tampering via proxy. |
+
+---
+
+## 5. Defensive Remediation & Detection Engineering
+
+### A. Network & API Access Control (NIST SP 800-53 AC-3, SC-7)
+- **Enforce Authentication:** Bind Ollama and MLflow behind an API gateway (e.g., Nginx, Envoy) configured with mTLS or Bearer Token authentication (`Authorization: Bearer <TOKEN>`).
+- **Explicit Host Binding:** Ensure all internal services explicitly bind to `127.0.0.1` rather than `0.0.0.0` in production compose configurations:
+  ```yaml
+  ports:
+    - "127.0.0.1:5000:5000"
+    - "127.0.0.1:8000:8000"
+  ```
+
+### B. Payload Integrity Verification (NIST SP 800-53 SI-7)
+- **HMAC Request Signing:** Implement SHA-256 HMAC request signing on frontend clients. The backend gateway must verify signatures and reject any intercepted and modified payloads (`401 Unauthorized / Invalid Signature`).
+
+### C. System Prompt Hardening & Leakage Prevention (OWASP LLM01:2026)
+- **Post-Generation Filtering:** Deploy an outbound guardrail model (e.g., Llama Guard) to inspect model responses for verbatim reflection of system prompts or disallowed instructional keywords prior to returning data to the client.
+
+---
+
+## 6. Standards Crosswalk
+
+- **OWASP Top 10 for LLM (2026):**
+  - **LLM01:2026 (Prompt Injection):** System prompt extraction via unaligned chat interfaces.
+  - **LLM08:2026 (Insecure Plugin / Endpoint Design):** Unauthenticated REST API exposing internal state.
+- **MITRE ATLAS:**
+  - **AML.TA0002 (Reconnaissance):** Active scanning of ML serving endpoints.
+  - **AML.T0006 (Model Extraction):** Extracting model configuration and metadata.
+  - **AML.T0051 (LLM Prompt Injection):** Direct interrogation for confidential instructions.
+- **MITRE SAFE-AI / NIST SP 800-53 Rev. 5:**
+  - **AC-3 (Access Enforcement):** Remediation of unauthenticated internal endpoints.
+  - **SC-8 (Transmission Confidentiality and Integrity):** TLS and HMAC deployment on inference pipelines.
