@@ -425,6 +425,6 @@ All artifacts captured during this assessment are stored in the `evidence/` dire
 * **SI-7 (Software, Firmware, and Information Integrity):** Mitigating in-flight prompt manipulation.
 
 ```
-[cite: 3]
+
 
 ```
